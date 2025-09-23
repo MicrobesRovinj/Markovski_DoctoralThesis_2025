@@ -1,0 +1,108 @@
+# SCIENTIFIC ARTICLES {#chapter-scientific-articles}
+
+```{=latex}
+
+% Customise the appearance of section titles stating
+% the name of scientific articles
+\titleformat{name=\section}
+    {\normalfont\Large\bfseries\FlushRight} % set font style and alignment
+    {\thesection} % specify number format
+    {1ex} % set space between number and title
+    {} % format title text
+    [\vspace{3pt}{\titlerule[0.4pt]}\newpage] % add horizontal line below
+                                              % title and set its width
+
+% Customise the position of section titles stating
+% the name of scientific articles
+\titlespacing*{\section}
+    {0pt} % set horizontal space to the left of the title
+    {20.0cm} % set vertical space before the title
+    {0pt} % set vertical space after the title
+
+% Switch to a new page
+\clearpage
+
+% Switch the page style to the plain page style
+% to clear the header
+\pagestyle{plain}
+
+% Prevent the removal of the vertical space
+% before the title (default LaTeX behaviour)
+\vspace*{0pt}
+
+```
+## Dynamics of environmental conditions during the decline of a *Cymodocea nodosa* meadow {#section-najdek-et-al-2020}
+
+```{=latex}
+
+% Switch to a new page
+\clearpage
+
+% Switch page style back to the custom page style
+% for the main and back matter sections
+\pagestyle{mainbackmatter}
+
+% Include the scientific article Najdek et al., 2020
+\includepdf[pages=-, landscape=false, pagecommand={}, scale=0.9]{articles/Najdek_et_al_2020.pdf}
+
+% Switch the page style to the plain page style
+% to clear the header
+\pagestyle{plain}
+
+% Prevent the removal of the vertical space
+% before the title (default LaTeX behaviour)
+\vspace*{0pt}
+
+```
+## Compositional stability of sediment microbial communities during a seagrass meadow decline {#section-markovski-et-al-2022}
+
+```{=latex}
+
+% Switch to a new page
+\clearpage
+
+% Switch page style back to the custom page style
+% for the main and back matter sections
+\pagestyle{mainbackmatter}
+
+% Include the scientific article Markovski et al., 2022
+\includepdf[pages=-, landscape=false, pagecommand={}, scale=0.9]{articles/Markovski_et_al_2022.pdf}
+
+% Switch the page style to the plain page style
+% to clear the header
+\pagestyle{plain}
+
+% Prevent the removal of the vertical space
+% before the title (default LaTeX behaviour)
+\vspace*{0pt}
+
+```
+## Shift in the metabolic profile of sediment microbial communities during seagrass decline {#section-markovski-et-al-2025}
+
+```{=latex}
+
+% Switch to a new page
+\clearpage
+
+% Switch page style back to the custom page style
+% for the main and back matter sections
+\pagestyle{mainbackmatter}
+
+% Include the scientific article Markovski et al., 2025
+\includepdf[pages=-, landscape=false, pagecommand={}, scale=0.9]{articles/Markovski_et_al_2025.pdf}
+
+% Restore the appearance of section titles
+\titleformat{\section}
+    {\normalfont\Large\bfseries} % set font style and alignment
+    {\thesection} % specify number format
+    {1ex} % set space between number and title
+    {} % format title text
+
+% Restore the position of section titles
+\titlespacing*{\section}
+    {0pt} % set horizontal space to the left of the title
+    {3.5ex plus 1ex minus .2ex} % set vertical space before the title
+    {2.3ex plus .2ex} % set vertical space after the title
+
+```
+

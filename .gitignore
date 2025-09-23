@@ -1,0 +1,5 @@
+.Rproj.user
+_main.log
+articles/*
+!articles/README.md
+

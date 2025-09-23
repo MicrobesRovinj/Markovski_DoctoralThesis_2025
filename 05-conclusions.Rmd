@@ -1,0 +1,22 @@
+# CONCLUSIONS
+
+Based on the objectives and hypotheses presented in Chapter \@ref(chapter-objectives-and-hypotheses) and the results concerning the status of the *C. nodosa* meadow and the dynamics of environmental conditions in the sediment of the Bay of Saline (Section \@ref(section-najdek-et-al-2020)), as well as the results on the composition (Section \@ref(section-markovski-et-al-2022)) and metabolic profile (Section \@ref(section-markovski-et-al-2025)) of the microbial communities in the same sediment, the following conclusions can be drawn:
+
+1. The decline and loss of the *C. nodosa* seagrass meadow was most likely triggered by the increased turbidity of the seawater, which was a result of the intensified terrigenous input and resuspension of the sediment. Consequently, the increased turbidity led to reduced light availability for the seagrass, which impaired its photosynthesis and its ability to oxidise hydrogen sulphide (\ch{H2S}).
+
+2. The decline of the seagrass meadow changed the environmental conditions in the sediment. In particular, an increase in hydrogen sulphide concentration and the expansion of its accumulation zone was observed during the decline of the meadow.
+
+3. Analysis of the V4 region of the 16S rRNA gene showed that the microbial communities in the sediment were primarily stratified by sediment depth and secondarily differed between the seagrass-vegetated and nonvegetated site.
+
+4. Taxonomic analysis of the microbial communities in the sediment showed that bacterial sequences dominated over archaeal sequences. The bacterial community was mainly comprised of *Desulfobacterota*, *Gammaproteobacteria*, *Bacteroidota*, *Chloroflexi*, *Planctomycetota*, and *Campylobacterota*, while the archaeal community consisted mainly of *Nanoarchaeota*, *Thermoplasmatota*, *Crenarchaeota*, and *Asgardarchaeota*.
+
+5. In contrast to the composition of the microbial communities in the sediment, which showed no temporal changes and thus no response to the decline of the seagrass, the metabolic profile of the same communities was primarily influenced by the decline of the seagrass meadow.
+
+6. Before the seagrass decline, differences in the metabolic profile of the microbial communities in the sediment were observed between the seagrass-vegetated and the nonvegetated site, especially in the deeper sediment parts. During the decline, these differences diminished and the metabolic profile of the microbial communities in the sediment at the nonvegetated site began to resemble that of the vegetated site.
+
+7. The proteins involved in organic matter degradation, such as ABC transporters, fermentation-mediating enzymes, and proteins involved in dissimilatory sulphate reduction, reflected these shifts observed for the overall metabolic profile.
+\bigskip
+\bigskip
+
+8. While the composition and metabolic profile of microbial communities in the seagrass-colonised sediment appear to be stable during the decline and loss of the seagrass meadow, the metabolic profile of microbial communities in the surrounding sediment shows a shift due to the decline, highlighting the broader ecological influence of the decline of seagrass meadows.
+

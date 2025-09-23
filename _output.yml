@@ -1,0 +1,14 @@
+bookdown::pdf_book:
+  toc: false
+  number_sections: true
+  keep_tex: true
+  latex_engine: pdflatex
+  includes:
+    in_header: latex/preamble.tex
+    before_body: latex/before_body.tex
+  pandoc_args: [
+    "--citeproc",
+    "--lua-filter=filters/translate_citations_to_hr.lua",
+    "--lua-filter=filters/abbreviate_given_name.lua"
+    ]
+
