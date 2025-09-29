@@ -474,12 +474,18 @@ figurewithin=none, tablewithin=none]{caption}
 \renewcommand{\thefigure}{\arabic{figure}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Bookmarks
+% Uniform Resource Locators (URLs)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Include package to create hyperlinks, including PDF bookmarks, and
-% open all levels of the bookmarks by default
-\usepackage[bookmarksopenlevel=\maxdimen]{hyperref}
+% Include the package to handle URLs
+\usepackage{url}
+
+% Redefine the commands that specify where line breaks can
+% occur in URLs (\UrlBreaks has a lower penalty, i.e. it is
+% more easily chosen, and does not break within a repeating
+% sequence)
+\renewcommand\UrlBreaks{\do\/\do\:\do\.\do\-}
+\renewcommand\UrlBigBreaks{\do\/\do\:\do\.\do\-}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Measurement units
@@ -513,6 +519,14 @@ figurewithin=none, tablewithin=none]{caption}
 
 % Include package for typesetting chemical formulae
 \usepackage{chemformula}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bookmarks
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Include package to create hyperlinks, including PDF bookmarks, and
+% open all levels of the bookmarks by default
+\usepackage[bookmarksopenlevel=\maxdimen]{hyperref}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Begin the front matter section
