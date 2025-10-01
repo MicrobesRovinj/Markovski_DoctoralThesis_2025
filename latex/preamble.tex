@@ -196,13 +196,15 @@ top=2.5cm, bottom=2.5cm, right=2.5cm, left=2.5cm]{geometry}
 % the front, main, and back matter section
 \makeatletter
 % Set the page numbering to uppercase Roman numerals
-% in the front matter section
+% or suppress page numbering in the front matter section
 \renewcommand{\frontmatter}{
-    \pagenumbering{Roman}
+    % Suppress page numbering
+    \pagenumbering{gobble}
+    % Uppercase Roman numerals
+%    \pagenumbering{Roman}
 }
-% Save the page number of the last front matter page,
-% so that the numbering can be continued in the back
-% matter section
+% Save the page number of the last front matter page
+% to continue numbering in the back matter if required
 \newcounter{savedfrontmatterpage}
 % Set the page numbering to Arabic numerals in the
 % main matter section
@@ -214,16 +216,19 @@ top=2.5cm, bottom=2.5cm, right=2.5cm, left=2.5cm]{geometry}
 }
 % Set the page numbering to uppercase Roman numerals
 % in the back matter section and continue the
-% numbering from the front matter secion
-\renewcommand\backmatter{
+% numbering from the front matter section or restart
+% the numbering
+\renewcommand{\backmatter}{
     \if@openright
-      \cleardoublepage
+    \cleardoublepage
     \else
       \clearpage
     \fi
+    \setcounter{savedfrontmatterpage}{\value{page}}
     \@mainmatterfalse
-    \pagenumbering{Roman}%
-    \setcounter{page}{\value{savedfrontmatterpage}}%
+    \pagenumbering{Roman}
+    % Continue the numbering from the front matter
+%    \setcounter{page}{\value{savedfrontmatterpage}}
 }
 \makeatother
 

@@ -194,6 +194,29 @@ University of Zagreb Faculty of Science, Department of Geology.
 \clearpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Supervisor information
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Prevent the removal of the vertical space
+% before the title (default LaTeX behaviour)
+\vspace*{0pt}
+
+% Create PDF bookmark for the Supervisor information
+\pdfbookmark{SUPERVISOR INFORMATION}{supervisor_information}
+
+```
+## SUPERVISOR INFORMATION {.unlisted .unnumbered #supervisor_information}
+
+Marino Korlević, PhD, graduated in biology from the University of Zagreb Faculty of Science in 2009. In 2015, he completed the Interdisciplinary Doctoral Study in Oceanology at the University of Zagreb Faculty of Science by defending his doctoral thesis "In-depth analysis of the Adriatic Sea bacterial diversity". He is currently a senior research associate in the Benthic Ecology Laboratory, Centre for Marine Research, Ruđer Bošković Institute, Rovinj, Croatia.
+
+He has been principal investigator of one project and an associate on 11. He is the first author of three articles, shared co-first author of one, corresponding author of two, first and corresponding author of three, and co-author of 10 scientific articles. Articles published in 2015, 2018, 2020, 2021, and 2022 received the Ruđer Bošković Institute Annual Award. He received the 2016 Annual Award for Young Scientists of the Croatian Microbiological Society, has participated in various international scientific conferences with oral and poster presentations, and is a member of the Croatian Microbiological Society. His main research interest is marine microbial ecology, especially the interactions between microbes and marine macrophytes.
+
+```{=latex}
+
+% Switch to a new page
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Acknowledgments
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -201,7 +224,7 @@ University of Zagreb Faculty of Science, Department of Geology.
 % before the title (default LaTeX behaviour)
 \vspace*{0pt}
 
-% Create PDF bookmark folater the Acknowledgments
+% Create PDF bookmark for the Acknowledgments
 \pdfbookmark{ACKNOWLEDGMENTS}{acknowledgments}
 
 ```
@@ -296,7 +319,7 @@ The presence of seagrass influences surface sediments and creates specific envir
             \setlength{\parskip}{0pt}
             
 ```
-(113 pages, 8 figures, 216 references, 3 appendices, original in English)
+(116 pages, 8 figures, 216 references, 3 appendices, original in English)
 
 ```{=latex}
             
@@ -404,7 +427,7 @@ Prisutnost morskih cvjetnica utječe na površinske sedimente stvarajući specif
             \setlength{\parskip}{0pt}
               
 ```
-(113 stranica, 8 slika, 216 literaturnih navoda, 3 priloga, jezik izvornika: engleski)
+(116 stranica, 8 slika, 216 literaturnih navoda, 3 priloga, jezik izvornika: engleski)
 
 ```{=latex}
             
@@ -545,3 +568,39 @@ Rezultati istraživanja sastava zajednica u sedimentu morske cvjetnice *Cymodoce
 
 ```
 
+```{=latex}
+
+% Switch to a new page
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% List of publications
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Prevent the removal of the vertical space
+% before the title (default LaTeX behaviour)
+\vspace*{0pt}
+
+% Create PDF bookmark for the List of publications
+\pdfbookmark{LIST OF PUBLICATIONS}{publication_list}
+
+```
+## LIST OF PUBLICATIONS {.unlisted .unnumbered #publication_list}
+
+1. Najdek, M., Korlević, M., Paliaga, P., **Markovski**, **M.**, Ivančić, I., Iveša, Lj., Felja, I., and Herndl, G. J. (2020). Dynamics of environmental conditions during the decline of a *Cymodocea nodosa* meadow. *Biogeosciences*, *17*(12), 3299–3315. https://doi.org/10.5194/bg-17-3299-2020  
+**Contributions**:
+\bigskip
+
+2. **Markovski**, **M.**, Najdek, M., Herndl, G. J., and Korlević, M. (2022). Compositional stability of sediment microbial communities during a seagrass meadow decline. *Frontiers in Marine Science*, *9*, 966070. https://doi.org/10.3389/fmars.2022.966070  
+**Contributions**:
+\bigskip
+
+3. **Markovski**, **M.**, Najdek, M., Zhao, Z., Herndl, G. J., and Korlević, M. (2025). Shift in the metabolic profile of sediment microbial communities during seagrass decline. *Environmental Microbiome*, *20*(1), 93. https://doi.org/10.1186/s40793-025-00750-1  
+**Contributions**:
+
+```{=latex}
+
+% Switch to a new page
+\clearpage
+
+```

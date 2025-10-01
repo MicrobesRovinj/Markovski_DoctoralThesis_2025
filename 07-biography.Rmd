@@ -1,25 +1,6 @@
-```{=latex}
+# BIOGRAPHY
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Begin the back matter section
-% (typically includes biography, appendices, index, etc.)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Execute command to begin the back matter section
-\backmatter
-
-```
-
-# BIOGRAPHY {.unnumbered}
-
-```{=latex}
-
-% Define header name for the numberless chapter
-\markboth{BIOGRAPHY}{}
-
-```
-
-Marsej Markovski was born on 6 January 1992 in Pula, Croatia. He completed his primary and secondary education in Rovinj, Croatia, and earned his bachelor's degree in aquaculture in 2013 and his master's degree in mariculture in 2016 from the University of Dubrovnik. Since 2017 he has been a professional associate at the Centre for Marine Research, Ruđer Bošković Institute, Rovinj. In 2019, he enrolled in the Interdisciplinary Doctoral Study in Oceanology at the Faculty of Sciences, University of Zagreb. He is the first author of two scientific articles and co-author of six. Articles published in 2020, 2021, and 2022 received the Ruđer Bošković Institute Annual Award.
+Marsej Markovski was born on 6 January 1992 in Pula, Croatia. He completed his primary and secondary education in Rovinj, Croatia, and earned his bachelor's degree in aquaculture in 2013 and his master's degree in mariculture in 2016 from the University of Dubrovnik. Since 2017 he has been a professional associate at the Centre for Marine Research, Ruđer Bošković Institute, Rovinj. In 2019, he enrolled in the Interdisciplinary Doctoral Study in Oceanology at the University of Zagreb Faculty of Science. He is the first author of two scientific articles and co-author of six. Articles published in 2018, 2020, 2021, and 2022 received the Ruđer Bošković Institute Annual Award.
 
 ### Publications {.unnumbered .unlisted}
 

@@ -1,4 +1,15 @@
-# APPENDICES {.unnumbered}
+```{=latex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin the back matter section
+% (typically includes appendices, index, etc.)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Execute command to begin the back matter section
+\backmatter
+
+```
+# APPENDICES
 
 ```{=latex}
 

@@ -296,13 +296,15 @@ top=2.5cm, bottom=2.5cm, right=2.5cm, left=2.5cm]{geometry}
 % the front, main, and back matter section
 \makeatletter
 % Set the page numbering to uppercase Roman numerals
-% in the front matter section
+% or suppress page numbering in the front matter section
 \renewcommand{\frontmatter}{
-    \pagenumbering{Roman}
+    % Suppress page numbering
+    \pagenumbering{gobble}
+    % Uppercase Roman numerals
+%    \pagenumbering{Roman}
 }
-% Save the page number of the last front matter page,
-% so that the numbering can be continued in the back
-% matter section
+% Save the page number of the last front matter page
+% to continue numbering in the back matter if required
 \newcounter{savedfrontmatterpage}
 % Set the page numbering to Arabic numerals in the
 % main matter section
@@ -314,16 +316,19 @@ top=2.5cm, bottom=2.5cm, right=2.5cm, left=2.5cm]{geometry}
 }
 % Set the page numbering to uppercase Roman numerals
 % in the back matter section and continue the
-% numbering from the front matter secion
-\renewcommand\backmatter{
+% numbering from the front matter section or restart
+% the numbering
+\renewcommand{\backmatter}{
     \if@openright
-      \cleardoublepage
+    \cleardoublepage
     \else
       \clearpage
     \fi
+    \setcounter{savedfrontmatterpage}{\value{page}}
     \@mainmatterfalse
-    \pagenumbering{Roman}%
-    \setcounter{page}{\value{savedfrontmatterpage}}%
+    \pagenumbering{Roman}
+    % Continue the numbering from the front matter
+%    \setcounter{page}{\value{savedfrontmatterpage}}
 }
 \makeatother
 
@@ -756,6 +761,26 @@ University of Zagreb Faculty of Science, Department of Geology.
 \clearpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Supervisor information
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Prevent the removal of the vertical space
+% before the title (default LaTeX behaviour)
+\vspace*{0pt}
+
+% Create PDF bookmark for the Supervisor information
+\pdfbookmark{SUPERVISOR INFORMATION}{supervisor_information}
+
+\section*{SUPERVISOR INFORMATION}\label{supervisor_information}
+
+Marino Korlević, PhD, graduated in biology from the University of Zagreb Faculty of Science in 2009. In 2015, he completed the Interdisciplinary Doctoral Study in Oceanology at the University of Zagreb Faculty of Science by defending his doctoral thesis ``In-depth analysis of the Adriatic Sea bacterial diversity''. He is currently a senior research associate in the Benthic Ecology Laboratory, Centre for Marine Research, Ruđer Bošković Institute, Rovinj, Croatia.
+
+He has been principal investigator of one project and an associate on 11. He is the first author of three articles, shared co-first author of one, corresponding author of two, first and corresponding author of three, and co-author of 10 scientific articles. Articles published in 2015, 2018, 2020, 2021, and 2022 received the Ruđer Bošković Institute Annual Award. He received the 2016 Annual Award for Young Scientists of the Croatian Microbiological Society, has participated in various international scientific conferences with oral and poster presentations, and is a member of the Croatian Microbiological Society. His main research interest is marine microbial ecology, especially the interactions between microbes and marine macrophytes.
+
+% Switch to a new page
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Acknowledgments
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -763,7 +788,7 @@ University of Zagreb Faculty of Science, Department of Geology.
 % before the title (default LaTeX behaviour)
 \vspace*{0pt}
 
-% Create PDF bookmark folater the Acknowledgments
+% Create PDF bookmark for the Acknowledgments
 \pdfbookmark{ACKNOWLEDGMENTS}{acknowledgments}
 
 \section*{ACKNOWLEDGMENTS}\label{acknowledgments}
@@ -853,7 +878,7 @@ The presence of seagrass influences surface sediments and creates specific envir
             \setlength{\parskip}{0pt}
             
 
-(113 pages, 8 figures, 216 references, 3 appendices, original in English)
+(116 pages, 8 figures, 216 references, 3 appendices, original in English)
 
             
         }
@@ -962,7 +987,7 @@ Prisutnost morskih cvjetnica utječe na površinske sedimente stvarajući specif
             \setlength{\parskip}{0pt}
               
 
-(113 stranica, 8 slika, 216 literaturnih navoda, 3 priloga, jezik izvornika: engleski)
+(116 stranica, 8 slika, 216 literaturnih navoda, 3 priloga, jezik izvornika: engleski)
 
             
         }
@@ -1103,6 +1128,40 @@ Rezultati istraživanja sastava zajednica u sedimentu morske cvjetnice \emph{Cym
     {0pt} % set horizontal space to the left of the title
     {20cm} % set vertical space before the title
     {0pt} % set vertical space after the title
+
+% Switch to a new page
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% List of publications
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Prevent the removal of the vertical space
+% before the title (default LaTeX behaviour)
+\vspace*{0pt}
+
+% Create PDF bookmark for the List of publications
+\pdfbookmark{LIST OF PUBLICATIONS}{publication_list}
+
+\section*{LIST OF PUBLICATIONS}\label{publication_list}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Najdek, M., Korlević, M., Paliaga, P., \textbf{Markovski}, \textbf{M.}, Ivančić, I., Iveša, Lj., Felja, I., and Herndl, G. J. (2020). Dynamics of environmental conditions during the decline of a \emph{Cymodocea nodosa} meadow. \emph{Biogeosciences}, \emph{17}(12), 3299--3315. \url{https://doi.org/10.5194/bg-17-3299-2020}\\
+  \textbf{Contributions}:
+  \bigskip
+\item
+  \textbf{Markovski}, \textbf{M.}, Najdek, M., Herndl, G. J., and Korlević, M. (2022). Compositional stability of sediment microbial communities during a seagrass meadow decline. \emph{Frontiers in Marine Science}, \emph{9}, 966070. \url{https://doi.org/10.3389/fmars.2022.966070}\\
+  \textbf{Contributions}:
+  \bigskip
+\item
+  \textbf{Markovski}, \textbf{M.}, Najdek, M., Zhao, Z., Herndl, G. J., and Korlević, M. (2025). Shift in the metabolic profile of sediment microbial communities during seagrass decline. \emph{Environmental Microbiome}, \emph{20}(1), 93. \url{https://doi.org/10.1186/s40793-025-00750-1}\\
+  \textbf{Contributions}:
+\end{enumerate}
+
+% Switch to a new page
+\clearpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Begin the main matter section
@@ -2131,21 +2190,9 @@ Zinke, L. A., Glombitza, C., Bird, J. T., Røy, H., Jørgensen, B. B., Lloyd, K.
 
 \end{CSLReferences}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Begin the back matter section
-% (typically includes biography, appendices, index, etc.)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{BIOGRAPHY}\label{biography}
 
-% Execute command to begin the back matter section
-\backmatter
-
-\chapter*{BIOGRAPHY}\label{biography}
-\addcontentsline{toc}{chapter}{BIOGRAPHY}
-
-% Define header name for the numberless chapter
-\markboth{BIOGRAPHY}{}
-
-Marsej Markovski was born on 6 January 1992 in Pula, Croatia. He completed his primary and secondary education in Rovinj, Croatia, and earned his bachelor's degree in aquaculture in 2013 and his master's degree in mariculture in 2016 from the University of Dubrovnik. Since 2017 he has been a professional associate at the Centre for Marine Research, Ruđer Bošković Institute, Rovinj. In 2019, he enrolled in the Interdisciplinary Doctoral Study in Oceanology at the Faculty of Sciences, University of Zagreb. He is the first author of two scientific articles and co-author of six. Articles published in 2020, 2021, and 2022 received the Ruđer Bošković Institute Annual Award.
+Marsej Markovski was born on 6 January 1992 in Pula, Croatia. He completed his primary and secondary education in Rovinj, Croatia, and earned his bachelor's degree in aquaculture in 2013 and his master's degree in mariculture in 2016 from the University of Dubrovnik. Since 2017 he has been a professional associate at the Centre for Marine Research, Ruđer Bošković Institute, Rovinj. In 2019, he enrolled in the Interdisciplinary Doctoral Study in Oceanology at the University of Zagreb Faculty of Science. He is the first author of two scientific articles and co-author of six. Articles published in 2018, 2020, 2021, and 2022 received the Ruđer Bošković Institute Annual Award.
 
 \subsection*{Publications}\label{publications}
 
@@ -2170,8 +2217,15 @@ Marsej Markovski was born on 6 January 1992 in Pula, Croatia. He completed his p
   Ivančić, I., Paliaga, P., Pfannkuchen, M., Djakovac, T., Najdek, M., Steiner, P., Korlević, M., \textbf{Markovski}, \textbf{M.}, Baričević, A., Smodlaka Tanković, M., and Herndl, G. J. (2018). Seasonal variations in extracellular enzymatic activity in marine snow-associated microbial communities and their impact on the surrounding water. \emph{FEMS Microbiology Ecology}, \emph{94}(12), fiy198. \url{https://doi.org/10.1093/femsec/fiy198}
 \end{enumerate}
 
-\chapter*{APPENDICES}\label{appendices}
-\addcontentsline{toc}{chapter}{APPENDICES}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin the back matter section
+% (typically includes appendices, index, etc.)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Execute command to begin the back matter section
+\backmatter
+
+\chapter{APPENDICES}\label{appendices}
 
 % Define header name for the numberless chapter
 \markboth{APPENDICES}{}
