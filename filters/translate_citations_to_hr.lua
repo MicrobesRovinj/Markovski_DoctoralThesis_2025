@@ -2,7 +2,7 @@
 
 This Lua filter translates citations from English to Croatian.
 The translations occur only in the section named "Prošireni sažetak 
-(extended abstract)" with the identifier "prošireni-sažetak-extended-abstract".
+(extended abstract)" with the identifier "prosireni-sazetak-extended-abstract".
 As part of the translation, this Lua filter removes the comma before "i sur." 
 in the same section. When citing in Croatian, the comma before "i sur." must be 
 removed.
@@ -52,7 +52,7 @@ function Blocks(blocks)
   -- Iterate through each block in the blocks table
   for i, block in ipairs(blocks) do
     -- Check if we are in the specified section for translation
-    if block.identifier == "prošireni-sažetak-extended-abstract" then
+    if block.identifier == "prosireni-sazetak-extended-abstract" then
       -- Set the flag to true if we are in the section
       in_section = true
     -- Reset the flag if we leave the section

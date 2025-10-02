@@ -202,10 +202,10 @@ University of Zagreb Faculty of Science, Department of Geology.
 \vspace*{0pt}
 
 % Create PDF bookmark for the Supervisor information
-\pdfbookmark{SUPERVISOR INFORMATION}{supervisor_information}
+\pdfbookmark{SUPERVISOR INFORMATION}{supervisor-information}
 
 ```
-## SUPERVISOR INFORMATION {.unlisted .unnumbered #supervisor_information}
+## SUPERVISOR INFORMATION {.unlisted .unnumbered #supervisor-information}
 
 Marino Korlević, PhD, graduated in biology from the University of Zagreb Faculty of Science in 2009. In 2015, he completed the Interdisciplinary Doctoral Study in Oceanology at the University of Zagreb Faculty of Science by defending his doctoral thesis "In-depth analysis of the Adriatic Sea bacterial diversity". He is currently a senior research associate in the Benthic Ecology Laboratory, Centre for Marine Research, Ruđer Bošković Institute, Rovinj, Croatia.
 
@@ -492,10 +492,10 @@ Doktorski rad prihvaćen:
     \setlength{\parskip}{3pt}
     
     % Create PDF bookmark for the Extended abstract
-    \pdfbookmark{PROŠIRENI SAŽETAK (EXTENDED ABSTRACT)}{prošireni-sažetak-extended-abstract}
+    \pdfbookmark{PROŠIRENI SAŽETAK (EXTENDED ABSTRACT)}{prosireni-sazetak-extended-abstract}
     
 ```
-## PROŠIRENI SAŽETAK (EXTENDED ABSTRACT) {.unlisted .unnumbered #prošireni-sažetak-extended-abstract}
+## PROŠIRENI SAŽETAK (EXTENDED ABSTRACT) {.unlisted .unnumbered #prosireni-sazetak-extended-abstract}
 
 Morske cvjetnice nastanjuju i oblikuju plitke obalne sedimente [@Duarte2002]. Njihove livade uklanjaju ugljik iz okoliša, čineći ove ekosustave važnim dionicima ublažavanja klimatskih promjena [@Duarte2005a; @Duarte2013; @Kennedy2010]. Međutim, zbog sve veće izloženosti antropogenom pritisku uočen je gubitak livada morskih cvjetnica na globalnoj razini [@Dunic2021; @Orth2006; @Waycott2009]. Prisutnost ovih biljaka u obalnim sedimentima stvara specifične uvjete okoliša koji podržavaju raznolike i aktivne mikrobne zajednice velikih brojnosti [@Duarte2005]. Većina istraživanja o mikrobnim zajednicama morskih cvjetnica vezana je za epifite i rizosferu [@Cucio2016; @Korlevic2021], dok su istraživanja u sedimentima rijetka. Posljedično su i saznanja o dinamici i utjecaju livade na mikrobne zajednice u sedimentima ograničena. U ovom okolišu, mikrobne zajednice pospješuju oslobađanje i transformaciju nutrijenata tijekom razgradnje organske tvari, podržavajući time rast i primarnu produkciju biljke. Osim ovakvih povoljnih učinaka, mikrobna aktivnost može imati i negativnih utjecaja na biljku, poput oslobađanja sumporovodika uslijed visokih stopa redukcije sulfata [@Duarte2005]. Za rast i razvoj morske cvjetnice bitno je da povoljni učinci mikrobne aktivnosti, poput oslobađanja i transformacije nutrijenata, nadvladavaju nepovoljne, kao što je proizvodnja sumporovodika [@Duarte2005]. Prisutnost livada morskih cvjetnica i mikrobna remineralizacija organske tvari u sedimentu bitni su čimbenici u biogeokemijskom ciklusu ugljika [@Duarte2005; @Duarte2005a]. Zbog navedenog, važno je unaprijediti razumijevanje međudjelovanja morskih cvjetnica i svih njihovih mikrobnih zajednica.
 
@@ -582,21 +582,21 @@ Rezultati istraživanja sastava zajednica u sedimentu morske cvjetnice *Cymodoce
 \vspace*{0pt}
 
 % Create PDF bookmark for the List of publications
-\pdfbookmark{LIST OF PUBLICATIONS}{publication_list}
+\pdfbookmark{LIST OF SCIENTIFIC ARTICLES}{scientific-articles-list}
 
 ```
-## LIST OF PUBLICATIONS {.unlisted .unnumbered #publication_list}
+## LIST OF SCIENTIFIC ARTICLES {.unlisted .unnumbered #scientific-articles-list}
 
 1. Najdek, M., Korlević, M., Paliaga, P., **Markovski**, **M.**, Ivančić, I., Iveša, Lj., Felja, I., and Herndl, G. J. (2020). Dynamics of environmental conditions during the decline of a *Cymodocea nodosa* meadow. *Biogeosciences*, *17*(12), 3299–3315. https://doi.org/10.5194/bg-17-3299-2020  
-**Contributions**:
+**Contribution**:
 \bigskip
 
 2. **Markovski**, **M.**, Najdek, M., Herndl, G. J., and Korlević, M. (2022). Compositional stability of sediment microbial communities during a seagrass meadow decline. *Frontiers in Marine Science*, *9*, 966070. https://doi.org/10.3389/fmars.2022.966070  
-**Contributions**:
+**Contribution**:
 \bigskip
 
 3. **Markovski**, **M.**, Najdek, M., Zhao, Z., Herndl, G. J., and Korlević, M. (2025). Shift in the metabolic profile of sediment microbial communities during seagrass decline. *Environmental Microbiome*, *20*(1), 93. https://doi.org/10.1186/s40793-025-00750-1  
-**Contributions**:
+**Contribution**:
 
 ```{=latex}
 
@@ -604,3 +604,4 @@ Rezultati istraživanja sastava zajednica u sedimentu morske cvjetnice *Cymodoce
 \clearpage
 
 ```
+
