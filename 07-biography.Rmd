@@ -1,0 +1,23 @@
+# BIOGRAPHY
+
+Marsej Markovski was born on 6 January 1992 in Pula, Croatia. He completed his primary and secondary education in Rovinj, Croatia, and earned his bachelor's degree in aquaculture in 2013 and his master's degree in mariculture in 2016 from the University of Dubrovnik. Since 2017 he has been a professional associate at the Centre for Marine Research, Ruđer Bošković Institute, Rovinj. In 2019, he enrolled in the Interdisciplinary Doctoral Study in Oceanology at the University of Zagreb Faculty of Science. He is the first author of two scientific articles and co-author of six. Articles published in 2018, 2020, 2021, and 2022 received the Ruđer Bošković Institute Annual Award.
+
+### Publications {.unnumbered .unlisted}
+
+1. **Markovski**, **M.**, Najdek, M., Zhao, Z., Herndl, G. J., and Korlević, M. (2025). Shift in the metabolic profile of sediment microbial communities during seagrass decline. *Environmental Microbiome*, *20*(1), 93. https://doi.org/10.1186/s40793-025-00750-1
+
+2. Korlević, M., **Markovski**, **M.**, Herndl, G. J., and Najdek, M. (2022). Temporal variation in the prokaryotic community of a nearshore marine environment. *Scientific Reports*, *12*(1), 16859. https://doi.org/10.1038/s41598-022-20954-6
+
+3. **Markovski**, **M.**, Najdek, M., Herndl, G. J., and Korlević, M. (2022). Compositional stability of sediment microbial communities during a seagrass meadow decline. *Frontiers in Marine Science*, *9*, 966070. https://doi.org/10.3389/fmars.2022.966070
+
+4. Korlević, M., **Markovski**, **M.**, Zhao, Z., Herndl, G. J., and Najdek, M. (2021). Seasonal dynamics of epiphytic microbial communities on marine macrophyte surfaces. *Frontiers in Microbiology*, *12*, 671342. https://doi.org/10.3389/fmicb.2021.671342
+
+5. Korlević, M., **Markovski**, **M.**, Zhao, Z., Herndl, G. J., and Najdek, M. (2021). Selective DNA and protein isolation from marine macrophyte surfaces. *Frontiers in Microbiology*, *12*, 665999. https://doi.org/10.3389/fmicb.2021.665999
+
+6. Najdek, M., Korlević, M., Paliaga, P., **Markovski**, **M.**, Ivančić, I., Iveša, Lj., Felja, I., and Herndl, G. J. (2020). Effects of the invasion of *Caulerpa cylindracea* in a *Cymodocea nodosa* meadow in the northern Adriatic Sea. *Frontiers in Marine Science*, *7*, 602055. https://doi.org/10.3389/fmars.2020.602055
+
+7. Najdek, M., Korlević, M., Paliaga, P., **Markovski**, **M.**, Ivančić, I., Iveša, Lj., Felja, I., and Herndl, G. J. (2020). Dynamics of environmental conditions during the decline of a *Cymodocea nodosa* meadow. *Biogeosciences*, *17*(12), 3299–3315. https://doi.org/10.5194/bg-17-3299-2020
+\smallskip
+
+8. Ivančić, I., Paliaga, P., Pfannkuchen, M., Djakovac, T., Najdek, M., Steiner, P., Korlević, M., **Markovski**, **M.**, Baričević, A., Smodlaka Tanković, M., and Herndl, G. J. (2018). Seasonal variations in extracellular enzymatic activity in marine snow-associated microbial communities and their impact on the surrounding water. *FEMS Microbiology Ecology*, *94*(12), fiy198. https://doi.org/10.1093/femsec/fiy198
+

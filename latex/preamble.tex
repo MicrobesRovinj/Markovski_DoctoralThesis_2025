@@ -1,0 +1,443 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Font
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Set font encoding to T1 (8-bit encoding, 256 glyphs) 
+% (improved text handling, especially with non-English
+% languages and text containing special characters)
+\usepackage[T1]{fontenc}
+
+% Set font to URW Nimbus Roman
+% (Times New Roman alternative)
+\usepackage{mathptmx}
+
+% Include the Helvetica font and scale the font to 92% of
+% its original size (used to better fit the Times like font 
+% provided by mathptmx)
+\usepackage[scaled=0.92]{helvet}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Turn off \maketitle so that we can customise
+% the title pages
+\AtBeginDocument{\let\maketitle\relax}
+
+% Define macros to customise the title pages
+\makeatletter
+% Define macro for title in Croatian
+\def\HRtitle#1{\gdef\@HRtitle{#1}}
+\def\@HRtitle{\@latex@warning@no@line{No \noexpand\HRtitle given}}
+% Define macro for faculty name in English
+\def\ENfaculty#1{\gdef\@ENfaculty{#1}}
+\def\@ENfaculty{\@latex@warning@no@line{No \noexpand\ENfaculty given}}
+% Define macro for faculty name in Croatian
+\def\HRfaculty#1{\gdef\@HRfaculty{#1}}
+\def\@HRfaculty{\@latex@warning@no@line{No \noexpand\HRfaculty given}}
+% Define macro for department name in English
+\def\ENdepartment#1{\gdef\@ENdepartment{#1}}
+\def\@ENdepartment{\@latex@warning@no@line{No \noexpand\ENdepartment given}}
+% Define macro for department name in Croatian
+\def\HRdepartment#1{\gdef\@HRdepartment{#1}}
+\def\@HRdepartment{\@latex@warning@no@line{No \noexpand\HRdepartment given}}
+% Define macro for supervisor name and title in English
+\def\ENsupervisor#1{\gdef\@ENsupervisor{#1}}
+\def\@ENsupervisor{\@latex@warning@no@line{No \noexpand\ENsupervisor given}}
+% Define macro for supervisor name and title in Croatian
+\def\HRsupervisor#1{\gdef\@HRsupervisor{#1}}
+\def\@HRsupervisor{\@latex@warning@no@line{No \noexpand\HRsupervisor given}}
+% Define macro for place
+\def\place#1{\gdef\@place{#1}}
+\def\@place{\@latex@warning@no@line{No \noexpand\place given}}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Table of contents (TOC), list of figures (LOF),
+% and list of tables (LOT)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Include package providing additional functionality for TOC
+% customisation
+\usepackage{titletoc}
+
+% Define the number of levels in the TOC
+\setcounter{tocdepth}{4}
+
+% Ensure that the dotted ruler in the TOC goes all the way
+% to the number
+\contentsmargin[2.8em]{0em}
+\renewcommand\contentspage{\thecontentspage}
+
+% Customise the appearance of the chapter level
+\titlecontents{chapter}
+    [1.0em] % text indentation
+    {\addvspace{0em}} % vertical space before entry
+    {\contentslabel{1.0em}} % set the format and indentation
+                            % of the numbered entries
+    {\hspace*{-1.0em}} % set the format and indentation
+                       % of the numberless entries
+    {\titlerule*[0.4pc]{.}\contentspage} % format the horizontal rule
+
+% Customise the appearance of the section level
+\titlecontents{section}
+    [2.8em] % text indentation (i.e., 1.0em (chapter) + 1.8em)
+    {\addvspace{0em}} % vertical space before entry
+    {\contentslabel{1.8em}} % set the format and indentation
+                            % of the numbered entries
+    {\hspace*{-1.8em}} % set the format and indentation
+                       % of the numberless entries
+    {\titlerule*[0.4pc]{.}\contentspage} % format the horizontal rule
+
+% Customise the appearance of the subsection level
+\titlecontents{subsection}
+    [5.5em] % text indentation (i.e., 2.8em (section) + 2.7em)
+    {\addvspace{0em}} % vertical space before entry
+    {\contentslabel{2.7em}} % set the format and indentation
+                            % of the numbered entries
+    {\hspace*{-2.7em}} % set the format and indentation
+                       % of the numberless entries
+    {\titlerule*[0.4pc]{.}\contentspage} % format the horizontal rule
+
+% Customise the appearance of the subsubsection level    
+\titlecontents{subsubsection}
+    [9.1em] % text indentation (i.e., 5.5em (subsection) + 3.6em)
+    {\addvspace{0em}} % vertical space before entry
+    {\contentslabel{3.6em}} % set the format and indentation
+                            % of the numbered entries
+    {\hspace*{-3.6em}} % set the format and indentation
+                       % of the numberless entries
+    {\titlerule*[0.4pc]{.}\contentspage} % format the horizontal rule
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Typsetting
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Include the geometry package to set various layout parameters
+% of the document, such as paper size, margins, and more
+% (here, we set the paper size, the size of the margins, and
+% define wheter the document has to be single or double sided)
+\usepackage[
+% Uncomment the following line to visualise the layout of the
+% document by drawing frames around the various areas, such as
+% the text area, margins, headers, and footers
+%showframe,
+paper=a4paper, twoside=false,
+top=2.5cm, bottom=2.5cm, right=2.5cm, left=2.5cm]{geometry}
+
+% Include package to create landscape-oriented pages
+\usepackage{pdflscape}
+
+% Include the package allowing the load of external
+% multi-page PDF documents in LaTeX documents
+\usepackage{pdfpages}
+
+% Include package providing fine-tuned typographic enhancements
+\usepackage{microtype}
+
+% Include package for text alignment
+% (provides refinements which improve the standard LaTeX
+% alignemnt commands and environments)
+\usepackage{ragged2e}
+
+% Supress hyphenation
+\usepackage[none]{hyphenat}
+
+% Include package for setting spacing between lines
+\usepackage{setspace}
+
+% Indent first paragraph of each section (including chapters)
+\usepackage{indentfirst}
+% Set the size of indentation
+% (36 pt corresponds to 0.5 inch)
+\setlength{\parindent}{36pt}
+
+% Set vertical space between paragraphs
+\setlength{\parskip}{6pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Headers and footers
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Include package for header and footer customisation
+\usepackage{fancyhdr}
+
+% Set the height of the header to avoid warnings from fancyhdr
+\setlength{\headheight}{14pt}
+
+% Set the space between the header and the text body
+% to control the overall vertical spacing and maintain
+% the appearance of the top margin
+\setlength{\headsep}{18pt}
+
+% Customise the heading format
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter\ #1}{}}
+
+% Setup a custom page style for the front matter section
+\fancypagestyle{frontmatter}{\fancyhf{}
+                             \renewcommand{\headrulewidth}{0pt}
+                             \fancyfoot[R]{\small\thepage}}
+
+% Setup a custom page style for the main and back matter sections
+\fancypagestyle{mainbackmatter}{\fancyhf{}
+                                \fancyhead[R]{\small\nouppercase{\leftmark}}
+                                \renewcommand{\headrulewidth}{0.4pt}
+                                \fancyfoot[R]{\small\thepage}}
+
+% Modify the page style for the plain page style
+% (typically used for the first page of a chapter, which
+% often has a different layout than the other pages in the document)
+% Clear page numbers from the footer and remove the header line at
+% the start of every chapter
+\fancypagestyle{plain}{\fancyhf{}
+                       \renewcommand{\headrulewidth}{0pt}}
+
+% Define custom commands for the page number format in
+% the front, main, and back matter section
+\makeatletter
+% Set the page numbering to uppercase Roman numerals
+% or suppress page numbering in the front matter section
+\renewcommand{\frontmatter}{
+    % Suppress page numbering
+    \pagenumbering{gobble}
+    % Uppercase Roman numerals
+%    \pagenumbering{Roman}
+}
+% Save the page number of the last front matter page
+% to continue numbering in the back matter if required
+\newcounter{savedfrontmatterpage}
+% Set the page numbering to Arabic numerals in the
+% main matter section
+\renewcommand{\mainmatter}{
+    \cleardoublepage
+    \setcounter{savedfrontmatterpage}{\value{page}}
+    \@mainmattertrue
+    \pagenumbering{arabic}
+}
+% Set the page numbering to uppercase Roman numerals
+% in the back matter section and continue the
+% numbering from the front matter section or restart
+% the numbering
+\renewcommand{\backmatter}{
+    \if@openright
+    \cleardoublepage
+    \else
+      \clearpage
+    \fi
+    \setcounter{savedfrontmatterpage}{\value{page}}
+    \@mainmatterfalse
+    \pagenumbering{Roman}
+    % Continue the numbering from the front matter
+%    \setcounter{page}{\value{savedfrontmatterpage}}
+}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Footnotes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Include the footmisc package to customize footnotes
+% and align the footnote marker with the left margin
+\usepackage[hang]{footmisc}
+
+% Set the space between the footnote marker and the footnote
+% text
+\setlength{\footnotemargin}{0.5em}
+
+% Include package for colour management
+\usepackage{xcolor}
+
+% Set the colour of the footnote text and rule
+\renewcommand\footnoterule{\kern -3pt \color{gray}
+    \hrule width 0.4\columnwidth height 0.4pt \kern 2pt}
+
+% Set the colour of the footnote mark
+\renewcommand{\thefootnote}{\textcolor{gray}{\arabic{footnote}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Headings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Include the package for heading customisation
+\usepackage{titlesec}
+
+% Customise chapter title appearance
+\titleformat{\chapter}
+    [block] % display number and title on the same line
+    {\Huge\bfseries\FlushRight} % set font style and alignment
+    {\thechapter} % specify number format
+    {1ex} % set space between number and title
+    {} % format title text
+    [{\titlerule[0.4pt]}\newpage] % add horizontal line below
+                                  % title and set its width
+
+% Customise the appearance of chapter titles that do not have
+% a number (i.e., unnumbered chapters)
+\titleformat{name=\chapter, numberless}
+    {\normalfont\Large\bfseries\MakeUppercase} % set font style and alignment
+    {} % specify number format
+    {0ex} % set space between number and title
+    {} % format title text
+    [\vspace{-0.4pc}] % reduce the space after the TOC title so
+                      % that it is the same as in other numberless
+                      % titles
+
+% Customise section title appearance
+\titleformat{\section}
+    {\normalfont\Large\bfseries} % set font style and alignment
+    {\thesection} % specify number format
+    {1ex} % set space between number and title
+    {} % format title text
+
+% Customise chapter title position
+\titlespacing*{\chapter}
+    {0pt} % set horizontal space to the left of the title
+    {20cm} % set vertical space before the title
+    {0pt} % set vertical space after the title
+
+% Customise the position of chapter titles that do not have
+% a number (i.e., unnumbered chapters)
+\titlespacing*{name=\chapter, numberless}
+    {0pt} % set horizontal space to the left of the title
+    {1.5cm} % set vertical space before the title
+    {1.5cm} % set vertical space after the title
+
+% Customise the position of section titles that do not have
+% a number (i.e., unnumbered sections)
+\titlespacing*{name=\section, numberless}
+    {0pt} % set horizontal space to the left of the title
+    {1.5cm} % set vertical space before the title
+    {1.5cm} % set vertical space after the title
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lists
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Include package to customise the appearance of itemised
+% lists
+\usepackage{enumitem}
+
+% Set the left margin for the itemised list
+% (align the items with the left margin)
+\setlist[itemize]{left=0pt}
+
+% Remove extra vertical space that is added above and below
+% itemize and enumerate lists
+\setlist{nosep}
+
+% Define a custom function for a list
+% of reviewers
+% (the word before the colon can be defined to be,
+% e.g., Reviewers, Ocjenjivači, etc.)
+\newenvironment{reviewers}[1]
+    {#1:\hspace{-0.5em}
+    \begin{minipage}[t]{0.5\linewidth}
+    \begin{itemize}[label={}, itemsep=0pt]}
+    {\end{itemize}
+    \end{minipage}
+    \vspace{6pt}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Figures and tables
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Include package enhancing figure and table placement
+% (provides "H" placement specifier forcing the float to
+% appear exactly where it is defined)
+\usepackage{float}
+
+% Set the vertical space between the text and the top and
+% bottom of the float
+\setlength{\textfloatsep}{10pt plus 1.0pt minus 2.0pt}
+
+% Set the vertical space between two floats
+\setlength{\floatsep}{10pt plus 1.0pt minus 2.0pt}
+
+% Set the vertical space between the text and the float
+% inserted within the text (when using [h])
+\setlength{\intextsep}{8pt plus 1.0pt minus 2.0pt}
+
+% Include package that implements the \afterpage command,
+% which allows executing commands specified in its
+% argument after the current page
+\usepackage{afterpage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Captions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Define the separator between the label and the caption text
+% and set the font size and typeface
+\usepackage[labelsep=period, font=small, labelfont=bf,
+% Set the numbering of figures and tables to continuous
+% (the default behaviour for the document class "book" is
+% to reset the numbering after every chapter) 
+figurewithin=none, tablewithin=none]{caption}
+% Set caption text to be justified
+\captionsetup{justification=justified}
+% Use Arabic numerals to number figures
+\renewcommand{\thefigure}{\arabic{figure}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Uniform Resource Locators (URLs)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Include the package to handle URLs
+\usepackage{url}
+
+% Redefine the commands that specify where line breaks can
+% occur in URLs (\UrlBreaks has a lower penalty, i.e. it is
+% more easily chosen, and does not break within a repeating
+% sequence)
+\renewcommand\UrlBreaks{\do\/\do\:\do\.\do\-}
+\renewcommand\UrlBigBreaks{\do\/\do\:\do\.\do\-}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Measurement units
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Include the package that facilitates consistent formatting
+% of scientific units and numbers
+\usepackage{siunitx}
+% Define unit \molar as moles per cubic decimetre
+\DeclareSIUnit{\molar}{\mole\per\cubic\deci\metre}
+% Define unit \Molar as small caps "M"  
+\DeclareSIUnit{\Molar}{\textsc{m}}
+% Define unit \cells as the text "cells"
+\DeclareSIUnit{\cells}{\text{cells}}
+% Define unit \litre as lowercase "l"
+\DeclareSIUnit{\litre}{l}
+% Define unit \vV as v/v
+\DeclareSIUnit{\vV}{v/v}
+% Define unit \wW as w/w
+\DeclareSIUnit{\wW}{w/w}
+% Define unit \bp as bp
+\DeclareSIUnit{\bp}{bp}
+% Define unit \cellsPerCubiccm as cells per cubic centimetre
+\DeclareSIUnit{\cellsPerCubiccm}{\cells\per\cubic\centi\metre}
+% Define unit \cellsPerg as cells per gram
+\DeclareSIUnit{\cellsPerg}{\cells\per\gram}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Chemical formulae
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Include package for typesetting chemical formulae
+\usepackage{chemformula}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bookmarks
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Include package to create hyperlinks, including PDF bookmarks, and
+% open all levels of the bookmarks by default
+\usepackage[bookmarksopenlevel=\maxdimen]{hyperref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin the front matter section
+% (typically includes preliminary pages like the title page,
+% acknowledgments, table of contents, etc.)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Execute command to begin the front matter section
+\frontmatter

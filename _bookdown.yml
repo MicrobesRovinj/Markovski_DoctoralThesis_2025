@@ -1,0 +1,12 @@
+delete_merged_file: true
+output_dir: "_book"
+rmd_files: ["index.Rmd",
+            "01-introduction.Rmd",
+            "02-objectives-and-hypotheses.Rmd",
+            "03-scientific-articles.Rmd",
+            "04-discussion.Rmd",
+            "05-conclusions.Rmd",
+            "06-bibliography.Rmd",
+            "07-biography.Rmd",
+            "08-appendices.Rmd"]
+

@@ -1,0 +1,154 @@
+```{=latex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin the back matter section
+% (typically includes appendices, index, etc.)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Execute command to begin the back matter section
+\backmatter
+
+```
+# APPENDICES
+
+```{=latex}
+
+% Define header name for the numberless chapter
+\markboth{APPENDICES}{}
+
+% Customise the appearance of section titles that do not have
+% a number (i.e., unnumbered sections) stating
+% the name of appendices
+\titleformat{name=\section, numberless}
+    {\normalfont\Large\bfseries\FlushRight} % set font style and alignment
+    {} % specify number format
+    {1ex} % set space between number and title
+    {} % format title text
+    [\vspace{3pt}{\titlerule[0.4pt]}\newpage] % add horizontal line below
+                                              % title and set its width
+
+% Customise the position of section titles that do not have
+% a number (i.e., unnumbered sections) stating
+% the name of appendices
+\titlespacing*{name=\section, numberless}
+    {0pt} % set horizontal space to the left of the title
+    {21cm} % set vertical space before the title
+    {0pt} % set vertical space after the title
+
+% Switch to a new page
+\clearpage
+
+% Switch the page style to the plain page style
+% to clear the header
+\pagestyle{plain}
+
+% Prevent the removal of the vertical space
+% before the title (default LaTeX behaviour)
+\vspace*{0pt}
+
+% Create an invisible section that can be referenced by hyperlinks, ensuring
+% that links in the e.g. table of contents (TOC) point to the correct location
+% in the document (without this command, hyperlinks do not work correctly for
+% unnumbered sections)
+\phantomsection
+
+```
+## Appendix A {.unnumbered #appendix-najdek-et-al-2020}
+
+```{=latex}
+
+% Switch to a new page
+\clearpage
+
+% Switch page style back to the custom page style
+% for the main and back matter sections
+\pagestyle{mainbackmatter}
+
+% Include the supplementary material for Najdek et al., 2020
+\includepdf[pages=1-3, landscape=false, pagecommand={}, scale=0.9]{articles/Najdek_et_al_2020_supplementary_material.pdf}
+\includepdf[pages=4-5, landscape=true, pagecommand={}, scale=0.9]{articles/Najdek_et_al_2020_supplementary_material.pdf}
+\includepdf[pages=6-8, landscape=false, pagecommand={}, scale=0.9]{articles/Najdek_et_al_2020_supplementary_material.pdf}
+
+% Switch to a new page
+\clearpage
+
+% Switch the page style to the plain page style
+% to clear the header
+\pagestyle{plain}
+
+% Prevent the removal of the vertical space
+% before the title (default LaTeX behaviour)
+\vspace*{0pt}
+
+% Create an invisible section that can be referenced by hyperlinks, ensuring
+% that links in the e.g. table of contents (TOC) point to the correct location
+% in the document (without this command, hyperlinks do not work correctly for
+% unnumbered sections)
+\phantomsection
+
+```
+## Appendix B {.unnumbered #appendix-markovski-et-al-2022}
+
+```{=latex}
+
+% Switch to a new page
+\clearpage
+
+% Switch page style back to the custom page style
+% for the main and back matter sections
+\pagestyle{mainbackmatter}
+
+% Include the supplementary material for Markovski et al., 2022
+\includepdf[pages=-, landscape=false, pagecommand={}, scale=0.9]{articles/Markovski_et_al_2022_supplementary_material.pdf}
+
+% Switch to a new page
+\clearpage
+
+% Switch the page style to the plain page style
+% to clear the header
+\pagestyle{plain}
+
+% Prevent the removal of the vertical space
+% before the title (default LaTeX behaviour)
+\vspace*{0pt}
+
+% Create an invisible section that can be referenced by hyperlinks, ensuring
+% that links in the e.g. table of contents (TOC) point to the correct location
+% in the document (without this command, hyperlinks do not work correctly for
+% unnumbered sections)
+\phantomsection
+
+```
+## Appendix C {.unnumbered #appendix-markovski-et-al-2025}
+
+```{=latex}
+
+% Switch to a new page
+\clearpage
+
+% Switch page style back to the custom page style
+% for the main and back matter sections
+\pagestyle{mainbackmatter}
+
+% Include the supplementary material for Markovski et al., 2025
+\includepdf[pages=1-4, landscape=false, pagecommand={}, scale=0.9]{articles/Markovski_et_al_2025_supplementary_material.pdf}
+\includepdf[pages=5, landscape=true, pagecommand={}, scale=0.9]{articles/Markovski_et_al_2025_supplementary_material.pdf}
+\includepdf[pages=6-9, landscape=false, pagecommand={}, scale=0.9]{articles/Markovski_et_al_2025_supplementary_material.pdf}
+
+% Restore the appearance of section titles that do not have
+% a number (i.e., unnumbered sections)
+\titleformat{name=\section, numberless}
+    {\normalfont\Large\bfseries} % set font style and alignment
+    {} % specify number format
+    {1ex} % set space between number and title
+    {} % format title text
+
+% % Restore the position of section titles that do not have
+% a number (i.e., unnumbered sections)
+\titlespacing*{name=\section, numberless}
+    {0pt} % set horizontal space to the left of the title
+    {2.5cm} % set vertical space before the title
+    {2.5cm} % set vertical space after the title
+
+```
+
