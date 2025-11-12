@@ -1,0 +1,141 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Format the title pages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Create PDF bookmark for the beginning of the document
+\pdfbookmark{TITLE}{title}
+
+% Switch font to Helvetica
+\sffamily
+
+% Declare the new geometry only for the title pages
+\newgeometry{top=3.0cm, bottom=3.0cm, right=3.0cm, left=3.0cm}
+
+% Customise the doctoral thesis cover
+\makeatletter
+\begin{titlepage}
+   \begin{Center}
+
+       \includegraphics[width=0.30\textwidth]{figures/logo/uni_zg_logo_en.png}
+       
+       \vspace{-0.2cm}
+       
+       {\fontsize{16pt}{19.2pt}\selectfont\@ENfaculty\\
+                                          \@ENdepartment\par}
+
+       \vspace{3.0cm}
+       
+       {\fontsize{16pt}{19.2pt}\selectfont\@author}
+       
+       \vspace{3.0cm}
+       
+       {\fontsize{22pt}{26.4pt}\selectfont\textbf{\@title}\par}
+       
+       \vspace{3.0cm}
+
+       {\fontsize{16pt}{19.2pt}\selectfont DOCTORAL THESIS}
+
+       \vfill
+       
+       {\fontsize{14pt}{16.8pt}\selectfont\@place, \@date}
+            
+   \end{Center}
+\end{titlepage}
+\makeatother
+
+% Discard the next blank page
+{\let\cleardoublepage\relax \frontmatter}
+
+% Customise the title page in English
+\makeatletter
+\begin{titlepage}
+   \begin{Center}
+
+       \includegraphics[width=0.30\textwidth]{figures/logo/uni_zg_logo_en.png}
+       
+       \vspace{-0.2cm}
+       
+       {\fontsize{16pt}{19.2pt}\selectfont\@ENfaculty\\
+                                          \@ENdepartment\par}
+
+       \vspace{2.5cm}
+       
+       {\fontsize{16pt}{19.2pt}\selectfont\@author}
+       
+       \vspace{3.0cm}
+       
+       {\fontsize{22pt}{26.4pt}\selectfont\textbf{\@title}\par}
+       
+       \vspace{2.0cm}
+
+       {\fontsize{16pt}{19.2pt}\selectfont DOCTORAL THESIS}
+       
+       \vspace{2.0cm}
+       
+       {\fontsize{16pt}{19.2pt}\selectfont Supervisor:\\
+                                           \@ENsupervisor\par}
+
+       \vfill
+       
+       {\fontsize{14pt}{16.8pt}\selectfont\@place, \@date}
+            
+   \end{Center}
+\end{titlepage}
+\makeatother
+
+% Discard the next blank page
+{\let\cleardoublepage\relax \frontmatter}
+
+% Customise the title page in Croatian
+\makeatletter
+\begin{titlepage}
+   \begin{Center}
+
+       \includegraphics[width=0.30\textwidth]{figures/logo/uni_zg_logo_hr.png}
+       
+       \vspace{-0.2cm}
+       
+       {\fontsize{16pt}{19.2pt}\selectfont\@HRfaculty\\
+                                          \@HRdepartment\par}
+
+       \vspace{2.5cm}
+       
+       {\fontsize{16pt}{19.2pt}\selectfont\@author}
+       
+       \vspace{3.0cm}
+       
+       {\fontsize{22pt}{26.4pt}\selectfont\textbf{\@HRtitle}\par}
+       
+       \vspace{2.0cm}
+
+       {\fontsize{16pt}{19.2pt}\selectfont DOKTORSKI RAD}
+       
+       \vspace{2.0cm}
+       
+       {\fontsize{16pt}{19.2pt}\selectfont Mentor:\\
+                                           \@HRsupervisor\par}
+
+       \vfill
+       
+       {\fontsize{14pt}{16.8pt}\selectfont\@place, \@date.}
+            
+   \end{Center}
+\end{titlepage}
+\makeatother
+
+% End the declared geometry for the titlepage
+\restoregeometry
+
+% Switch the page style to the custom page style
+% for the front matter section
+\pagestyle{frontmatter}
+
+% Switch font back to book default font,
+% the URW Nimbus Roman
+\rmfamily
+
+% Set line spacing
+\spacing{1.4}
+
+% Reset the page counter to 1
+\setcounter{page}{1}

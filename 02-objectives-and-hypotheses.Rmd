@@ -1,0 +1,19 @@
+# OBJECTIVES AND HYPOTHESES {#chapter-objectives-and-hypotheses}
+
+Seagrasses are considered ecosystem engineers because they modify, maintain, and create habitats [@Jones1994; @Orth2006]. The decline and loss of seagrass meadows, which are ecologically important habitats, is worrying as it has been observed on a global scale, including in the Mediterranean and Adriatic Sea [@Dunic2021; @Danovaro2020]. Sediments of seagrass meadows are considered hotspots for microbial activity, as these habitats are enriched with organic matter directly by seagrasses or through various seagrass-mediated processes. Several ecological interactions between seagrasses and microbes in the sediment have been described, suggesting that these plants and microbes live in a state of delicate balance [@Duarte2005]. Although microbial communities living in the sediments of many seagrass species have been described [@Fraser2018; @Garcia-Martinez2009; @Liu2018; @Smith2004; @Sun2020; @Ugarelli2024], little is known about the response of these communities to the decline and loss of seagrasses.
+
+The decline of *Cymodocea nodosa*, whose sediment microbes are the subject of this doctoral thesis, has been observed in various parts of the Mediterranean [@Barsanti2007; @Boudouresque2009; @Perez-Ruzafa2006; @Shili2002], including the Adriatic Sea [@Green2003; @Orlando-Bonaca2015; @Orlando-Bonaca2019]. Although the rhizosphere and epiphytic microbial communities of this seagrass species have been described [@Cucio2016; @Korlevic2021], little is known about the communities living in the sediment of its meadow. Therefore, the objectives of this doctoral thesis were:
+
+1. To assess the composition and diversity of sediment microbial communities in a *C. nodosa* seagrass meadow using a marker gene sequencing approach.
+
+2. To assess the functional diversity and dynamics of sediment microbial communities in a *C. nodosa* seagrass meadow using a metagenomic and metaproteomic approach.
+
+\noindent
+In addition, the following hypotheses were tested:
+
+1. Decline of the *C. nodosa* meadow alters sediment environmental conditions.
+
+2. The sediment microbial community structure differs with sediment depth, between the vegetated and nonvegetated sites, and throughout the study period.
+
+3. The metabolic profile of the sediment microbial community differs with sediment depth, between the vegetated and nonvegetated sites, and throughout the study period.
+

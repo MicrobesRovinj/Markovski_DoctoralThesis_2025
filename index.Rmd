@@ -1,0 +1,606 @@
+---
+title: "SEDIMENT MICROBIAL COMMUNITIES IN A *Cymodocea nodosa* SEAGRASS MEADOW"
+author: "Marsej Markovski"
+date: "2025"
+header-includes:
+  - \HRtitle{MIKROBNE ZAJEDNICE SEDIMENTA U LIVADI MORSKE CVJETNICE \textit{Cymodocea nodosa}}
+  - \ENfaculty{Faculty of Science}
+  - \HRfaculty{Prirodoslovno-matematički fakultet}
+  - \ENdepartment{Department of Geology}
+  - \HRdepartment{Geološki odsjek}
+  - \ENsupervisor{Marino Korlević, PhD}
+  - \HRsupervisor{dr. sc. Marino Korlević}
+  - \place{Zagreb}
+site: bookdown::bookdown_site
+documentclass: book
+fontsize: 12 pt
+citeproc: false
+bibliography: [
+  "bibliography/references.bib",
+  "bibliography/r-packages.bib"
+  ]
+csl: bibliography/citation_style.csl # Get themes at https://github.com/citation-style-language/styles
+link-citations: yes
+---
+
+```{r, knitr_settings, eval = TRUE, echo = FALSE, cache = FALSE, results = "hide"}
+
+################################################################################
+# Change the default values of chunk options
+################################################################################
+
+opts_chunk$set("tidy" = TRUE)
+opts_chunk$set("echo" = FALSE)
+opts_chunk$set("eval" = TRUE)
+opts_chunk$set("warning" = FALSE)
+opts_chunk$set("cache" = FALSE)
+opts_chunk$set("message" = FALSE)
+
+################################################################################
+# Define a custom hook function to format output from inline R expressions
+################################################################################
+
+# Define a custom hook function to format output from inline R expressions
+# (This enables number formatting during inline R code execution.)
+inline_hook <- function(x){
+	
+  print(x)
+  
+	if(is.list(x)){
+		x <- unlist(x)
+	}
+  
+	if(is.numeric(x)){
+		if(abs(x - round(x)) < .Machine$double.eps ^ 0.5){
+			paste(format(x, big.mark = ',', digits = NULL, scientific = FALSE))
+		} else {
+			paste(format(x, big.mark = ',', digits = 1, nsmall = 1, scientific = FALSE))
+		}
+	} else {
+    	paste(x)
+	  }
+  }
+
+# Register the custom inline hook
+knitr::knit_hooks$set(inline = inline_hook)
+
+```
+
+```{bash}
+
+# Define the PROJECT_DIR environmental variable to hold the name of the current
+# directory
+export PROJECT_DIR=$(basename $PWD)
+
+# Update the GitHub repository/project directory name in the README.md file
+sed -i "s/\(^git clone https:\/\/github.com\/MicrobesRovinj\/\).*\(.git\)/\1$PROJECT_DIR\2/" README.md
+sed -i "s/\(^cd \).*\(\/\)/\1$PROJECT_DIR\2/" README.md
+
+```
+
+```{r, readme-update}
+
+# Update the software and R package information in the README.md file
+source("code/write_software_version.R")
+source("code/write_package_information.R")
+
+```
+
+```{bash}
+
+# Bash commands to clean the repository by removing specific files before
+# compiling the output document
+find ./ -maxdepth 1 -type f -name "_main.*" -not -name "_main.Rmd" -delete
+find _book/ -type f -name "_main.*" -delete
+find articles/ -type f -not -name "README.md" -delete
+
+```
+
+```{bash}
+
+# Bash command to download published articles and their supplementary
+# materials to the "articles/" directory. The downloaded files will be
+# used in the compiling of "03-scientific-articles.Rmd" and
+# "08-appendices.Rmd".
+wget -q https://bg.copernicus.org/articles/17/3299/2020/bg-17-3299-2020.pdf -O articles/Najdek_et_al_2020.pdf
+wget -q https://bg.copernicus.org/articles/17/3299/2020/bg-17-3299-2020-supplement.pdf -O articles/Najdek_et_al_2020_supplementary_material.pdf
+wget -q https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2022.966070/pdf -O articles/Markovski_et_al_2022.pdf
+wget -q https://www.frontiersin.org/api/v4/articles/966070/file/Data_Sheet_1.PDF/966070_supplementary-materials_datasheets_1_pdf/1 -O articles/Markovski_et_al_2022_supplementary_material.pdf
+wget -q https://environmentalmicrobiome.biomedcentral.com/counter/pdf/10.1186/s40793-025-00750-1.pdf -O articles/Markovski_et_al_2025.pdf
+wget -q https://ndownloader.figstatic.com/files/56477824 -O articles/Markovski_et_al_2025_supplementary_material.pdf
+
+```
+
+```{r, r-packages}
+
+# Create and write bib entries for the R package bookdown
+write_bib(x = "bookdown", file = "bibliography/r-packages.bib")
+
+# Repair known issues with capitalisation in package titles and omit
+# capitalisation after colons
+system("sed -i 's/title = {bookdown: Authoring Books and Technical Documents with R Markdown}/title = {{bookdown: authoring books and technical documents with R Markdown}}/' bibliography/r-packages.bib")
+system("sed -i 's/title = {bookdown: Authoring Books and Technical Documents with {R} Markdown}/title = {{bookdown: authoring books and technical documents with R Markdown}}/' bibliography/r-packages.bib")
+
+```
+
+```{bash}
+
+# Bash command to replace the language defined as English with undefined
+# The CSL capitalises words after a colon for English titles if the following
+# text is a complete sentence. To prevent this, the language
+# is set to undefined. Ensure all entries in bibliography/references.bib have
+# a langid field set to langid = {English}, langid = {english},
+# langid = {en}, or another language. In British English, capitalisation
+# occurs only for proper nouns or acronyms after a colon.
+sed -i "s/langid = {\\(English\\|english\\|en\\)}/langid = {undefined}/" bibliography/references.bib
+
+```
+
+```{=latex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Statment
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Center the statement text in the middle of the page
+{
+
+    % To be able to position the text exactly in the middle
+    % the page some typesetting parameters need to be set
+    
+    % Set the amount of space that is added to the vertical
+    % list above the first box on a page to 0 pt
+    \setlength{\topskip}{0pt}
+    
+    % Prevent LaTeX from adding any vertical space between
+    % lines of text (In LaTeX, lines of text are separated
+    % by a small amount of vertical space, to include, e.g.,
+    % a math formula containing an exponent. This space is
+    % controlled by the \baselineskip parameter, it is added
+    % to the vertical list between each line of text, and helps
+    % to ensure that the lines are spaced evenly and are easy
+    % to read.)
+    \nointerlineskip
+    
+    % Set vertical space between paragraphs to 0 pt
+    \setlength{\parskip}{0pt}
+    
+    % Fill the space until the middle of the page
+    \vspace*{\fill}
+    
+    % Center the statment text
+    \begin{Center}
+    
+```
+This doctoral thesis[^1] was completed at the Ruđer Bošković Institute,
+Centre for Marine Research, Laboratory for Marine Microbial Ecology and
+Laboratory for Benthic Ecology, Rovinj, under the supervision of Marino Korlević,
+PhD, as part of the Interdisciplinary Doctoral Study in Oceanology at the
+University of Zagreb Faculty of Science, Department of Geology.
+
+[^1]: \justifying This doctoral thesis was created using the R package bookdown [@bookdown2016; @R-bookdown] and is available on GitHub (<https://github.com/MicrobesRovinj/`r system(command = "basename $PWD", intern = TRUE)`>).
+
+```{=latex}
+    
+    % End the Center environment
+    \end{Center}
+    
+    % Fill the space until the end of the page
+    \vspace*{\fill}
+    
+}
+
+% Switch to a new page
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Supervisor information
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Prevent the removal of the vertical space
+% before the title (default LaTeX behaviour)
+\vspace*{0pt}
+
+% Create PDF bookmark for the Supervisor information
+\pdfbookmark{SUPERVISOR INFORMATION}{supervisor-information}
+
+```
+## SUPERVISOR INFORMATION {.unlisted .unnumbered #supervisor-information}
+
+Marino Korlević, PhD, graduated in biology from the University of Zagreb Faculty of Science in 2009. In 2015, he completed the Interdisciplinary Doctoral Study in Oceanology at the University of Zagreb Faculty of Science by defending his doctoral thesis "In-depth analysis of the Adriatic Sea bacterial diversity". He is currently a senior research associate in the Laboratory for Benthic Ecology, Centre for Marine Research, Ruđer Bošković Institute, Rovinj, Croatia.
+
+He has been principal investigator of one project and an associate on 11. He is the first author of three articles, shared co-first author of one, corresponding author of two, first and corresponding author of three, and co-author of 10 scientific articles. Articles published in 2015, 2018, 2020, 2021, and 2022 received the Ruđer Bošković Institute Annual Award. He received the 2016 Annual Award for Young Scientists of the Croatian Microbiological Society, has participated in various international scientific conferences with oral and poster presentations, and is a member of the Croatian Microbiological Society. His main research interest is marine microbial ecology, especially the interactions between microbes and marine macrophytes.
+
+```{=latex}
+
+% Switch to a new page
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Acknowledgments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Prevent the removal of the vertical space
+% before the title (default LaTeX behaviour)
+\vspace*{0pt}
+
+% Create PDF bookmark for the Acknowledgments
+\pdfbookmark{ACKNOWLEDGMENTS}{acknowledgments}
+
+```
+## ACKNOWLEDGMENTS {.unlisted .unnumbered #acknowledgments}
+
+- The research was performed within the framework of the project “Unravelling the complexity of microbial dynamics in invaded seagrass meadows” (MICRO-SEAGRASS), funded by the Croatian Science Foundation (project number IP-2016-06-7118).
+
+- Special thanks to the University Computing Centre of the University of Zagreb for access to the Isabella computer cluster and to the Division of Computational Systems Biology (CUBE) of the University of Vienna for access to the Life Science Compute Cluster (LiSC).
+
+- This endeavour would not have been possible without the supervision and shared knowledge of Marino Korlević, PhD, during the whole doctoral study.
+
+- I am extremely grateful to Mirjana Najdek, PhD, for the granted opportunity to work at the Laboratory for Marine Microbial Ecology and the support to enrol in the Interdisciplinary Doctoral Study in Oceanology. 
+
+- I would like to extend my sincere thanks to all the co-authors of the published articles for the help and expertise provided.
+
+- Many thanks to the reviewers for the time and effort invested in reviewing this doctoral thesis, as well as all the previous seminars.
+
+- Lastly, I would like to acknowledge my family, dad thank you for preparing me and mom thank you for the much needed push, my wife for sticking with me, and my daughter for the joy she brings me.
+
+```{=latex}
+
+% Switch to a new page
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Abstract
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Create PDF bookmark for the Abstract
+\pdfbookmark{ABSTRACT}{abstract}
+
+% Set line spacing for the Abstract
+{
+
+    % Set line spacing
+    \singlespacing
+
+    % Customise the top of the abstract page
+        {
+        
+            % Set the size of indentation to 0 pt
+            \setlength{\parindent}{0pt}
+    
+```
+University of Zagreb\hfill Doctoral thesis  
+Faculty of Science  
+Department of Geology
+
+```{=latex}
+        
+        }
+
+    \bigskip
+
+    % Center the title, author name, affiliation, and the
+    % word Abstract
+    {\Centering
+
+```
+**SEDIMENT MICROBIAL COMMUNITIES IN A *Cymodocea nodosa* SEAGRASS MEADOW**
+
+\bigskip
+
+Marsej Markovski
+
+Centre for Marine Research, Ruđer Bošković Institute,  
+G. Paliaga 5, Rovinj, Croatia
+
+\bigskip
+
+**Abstract**
+
+```{=latex}
+    
+    }
+    
+```
+The presence of seagrass in marine environments influences surface sediments and creates specific environmental conditions that support diverse and abundant sediment microbial communities. However, the decline of seagrass meadows of various species has been documented worldwide, including that of *Cymodocea nodosa*, a common seagrass species in the Mediterranean Sea. In the Bay of Saline, located in the northern Adriatic Sea, a decline of a *Cymodocea nodosa* meadow was observed during its monthly status assessment from July 2017 to October 2018. To determine the response of sediment microbes to seagrass meadow decline, surface sediments were collected from two sites during that period, one without vegetation and one with the declining seagrass meadow. The microbial response was assessed by determining community composition and metabolic profile. In addition, the environmental conditions in the sediment were assessed and changes after the onset of meadow decline were detected, such as an accumulation of hydrogen sulphide. Despite these changes, no clear temporal succession of the microbial community in the sediment was observed. Instead, the communities were stratified by sediment depth and exhibited distinct community composition between sites. The bacterial community was mainly comprised of *Desulfobacterota*, *Gammaproteobacteria*, *Bacteroidota*, *Chloroflexi*, *Planctomycetota*, and *Campylobacterota*, while the archaeal community was dominated by *Nanoarchaeota*, *Thermoplasmatota*, *Crenarchaeota*, and *Asgardarchaeota*. Functional analysis based on microbial profiles revealed that these communities degrade complex sugars and proteins, producing acetate, formate, and ethanol by fermentation, thereby supporting dissimilatory sulphate reduction. Before the seagrass decline, notable differences in the metabolic profiles were observed between sites. However, during the decline, the profiles converged, with those of the nonvegetated site resembling the ones of the *Cymodocea nodosa* meadow sediment. These results indicate that while the microbial communities in the seagrass meadow sediments remain stable in composition and function during the decline, adjacent communities shift their metabolic profiles, highlighting the broader ecological influence of the decline of seagrass meadows.
+
+```{=latex}
+
+    % Customise the bottom of the abstract page
+    {
+    
+        % Set the size of indentation to 0 pt
+        \setlength{\parindent}{0pt}
+        
+        % Set the vertical space between the abstract paragraph and
+        % the text in parenteses to 0 pt
+        {
+        
+            \setlength{\parskip}{0pt}
+            
+```
+(117 pages, 8 figures, 217 references, 3 appendices, original in English)
+
+```{=latex}
+            
+        }
+        
+```
+Keywords: sediment microbial communities, microbial community composition, microbial metabolic profile, *Cymodocea nodosa*, seagrass meadow decline, northern Adriatic Sea
+
+Supervisor: Marino Korlević, PhD
+
+```{=latex}
+        
+        % Use custom environment to create a
+        % list of reviewers in English
+        \begin{reviewers}{Reviewers}
+        
+```
+\item Assoc. Prof. Sunčica Bosak, PhD
+\item Ines Sviličić Petrić, PhD
+\item Ljiljana Iveša, PhD
+
+```{=latex}
+        
+        \end{reviewers}
+        
+```
+Doctoral thesis accepted: 7 November 2025
+
+```{=latex}
+        
+    }
+    
+}
+
+% Switch to a new page
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Sažetak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Create PDF bookmark for the Sažetak
+\pdfbookmark{SAŽETAK}{sažetak}
+
+% Set line spacing for the Sažetak
+{
+
+    % Set line spacing
+    \singlespacing
+    
+    % Customise the top of the sažetak page
+    {
+    
+        % Set the size of indentation to 0 pt
+        \setlength{\parindent}{0pt}
+        
+```
+Sveučilište u Zagrebu\hfill Doktorski rad  
+Prirodoslovno-matematički fakultet  
+Geološki odsjek
+
+```{=latex}
+           
+    }
+    
+    \bigskip
+    
+    % Center the title, author name, affiliation, and the
+    % word Sažetak
+    {\Centering
+    
+```
+**MIKROBNE ZAJEDNICE SEDIMENTA U LIVADI MORSKE CVJETNICE *Cymodocea nodosa***
+
+\bigskip
+
+Marsej Markovski
+
+Centar za istraživanje mora, Institut Ruđer Bošković,  
+G. Paliaga 5, Rovinj, Hrvatska
+
+\bigskip
+
+**Sažetak**
+
+```{=latex}
+    
+    }
+    
+```
+Prisutnost morskih cvjetnica u morskom okolišu utječe na površinske sedimente stvarajući specifične uvjete pogodne za raznolike mikrobne zajednice velikih brojnosti. No, širom svijeta zabilježeno je propadanje livada morskih cvjetnica raznih vrsta, uključujući livade vrste *Cymodocea nodosa*, česte morske cvjetnice u Sredozemnom moru. Propadanje livade ove vrste utvrđeno je i u uvali Saline, smještenoj u sjevernom Jadranskom moru, tijekom redovitog postupka procjene stanja livade morske cvjetnice provedenog od srpnja 2017. do listopada 2018. Tijekom ovog razdoblja uzorkovan je površinski sediment na dvije postaje, jednoj bez vegetacije i jednoj s propadajućom livadom, kako bi se odredio odgovor mikrobnih zajednica sedimenta na propadanje livade morske cvjetnice. Odgovor mikrobnih zajednica utvrđen je određivanjem njihovog sastava i metaboličkog profila. Također, određeni su uvjeti okoliša u sedimentu te su zabilježene promjene uvjeta nakon početka propadanja livade, poput nakupljanja sumporovodika. Unatoč ovim promjenama, nije utvrđena jasna vremenska sukcesija mikrobne zajednice sedimenta. Umjesto toga, uočene su promjene u sastavu zajednica u odnosu na dubinu sedimenta i između postaja. Bakterijsku zajednicu činila su prvenstveno koljena *Desulfobacterota*, *Bacteroidota*, *Chloroflexi*, *Planctomycetota* i *Campylobacterota* te razred *Gammaproteobacteria*, dok su zajednicom arheja prevladavala koljena *Nanoarchaeota*, *Thermoplasmatota*, *Crenarchaeota* i *Asgardarchaeota*. Funkcionalna analiza temeljena na mikrobnim profilima otkrila je da ove zajednice razgrađuju složene šećere i proteine proizvodeći acetat, format i etanol fermentacijom, čime podržavaju disimilatornu redukciju sulfata. Prije propadanja livade uočene su primjetne razlike između postaja u metaboličkim profilima. Međutim, metabolički su profili tijekom propadanja postali vrlo slični, pri čemu su profili nevegetirane postaje počeli nalikovati sedimentu s vrstom *Cymodocea nodosa*. Ovi rezultati ukazuju da, iako sastav i funkcija mikrobnih zajednica u sedimentu livade morske cvjetnice ostaju nepromijenjeni tijekom propadanja, okolne zajednice pokazuju promjene metaboličkog profila naglašavajući širi ekološki utjecaj propadanja livada morskih cvjetnica.
+
+```{=latex}
+    
+    % Customise the bottom of the sažetak page
+    {
+    
+        % Set the size of indentation to 0 pt
+        \setlength{\parindent}{0pt}
+        
+        % Set the vertical space between the sažetak paragraph and
+        % the text in parenteses to 0 pt
+        {
+        
+            \setlength{\parskip}{0pt}
+              
+```
+(117 stranica, 8 slika, 217 literaturnih navoda, 3 priloga, jezik izvornika: engleski)
+
+```{=latex}
+            
+        }
+        
+```
+Ključne riječi: mikrobne zajednice sedimenta, sastav mikrobne zajednice, metabolički profil mikroorganizama, *Cymodocea nodosa*, propadanje livade morske cvjetnice, sjeverno Jadransko more
+
+Mentor: dr. sc. Marino Korlević
+
+```{=latex}
+        
+        % Use custom environment to create a
+        % list of reviewers in Croatian
+        \begin{reviewers}{Ocjenjivači}
+        
+```
+\item izv. prof. dr. sc. Sunčica Bosak
+\item dr. sc. Ines Sviličić Petrić
+\item dr. sc. Ljiljana Iveša
+
+```{=latex}
+        
+        \end{reviewers}
+        
+```
+Doktorski rad prihvaćen: 7. studenoga 2025.
+
+```{=latex}
+        
+    }
+    
+}
+
+% Switch to a new page
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Extended abstract
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Customise the Extended abstract
+{
+
+    % Prevent the removal of the vertical space
+    % before the title (default LaTeX behaviour)
+    \vspace*{0pt}
+    
+    % Customise the position of section titles that do not have
+    % a number (i.e., unnumbered sections)
+    % (inside curly braces, applies only to the title of the
+    % Extended abstract)
+    \titlespacing*{name=\section, numberless}
+        {0pt} % set horizontal space to the left of the title
+        {1.78cm} % set vertical space before the title
+        {1.68cm} % set vertical space after the title
+    
+    % Set line spacing
+    \singlespacing
+    
+    % Set vertical space between paragraphs
+    \setlength{\parskip}{3pt}
+    
+    % Create PDF bookmark for the Extended abstract
+    \pdfbookmark{PROŠIRENI SAŽETAK (EXTENDED ABSTRACT)}{prosireni-sazetak-extended-abstract}
+    
+```
+## PROŠIRENI SAŽETAK (EXTENDED ABSTRACT) {.unlisted .unnumbered #prosireni-sazetak-extended-abstract}
+
+Morske cvjetnice nastanjuju i oblikuju plitka obalna sedimentna dna [@Duarte2002]. Njihove livade pohranjuju i time uklanjaju ugljik iz okoliša, čineći ove ekosustave važnim dionicima ublažavanja klimatskih promjena [@Duarte2005a; @Duarte2013; @Kennedy2010]. Međutim, zbog sve veće izloženosti antropogenim pritiscima uočen je gubitak livada morskih cvjetnica na globalnoj razini [@Dunic2021; @Orth2006; @Waycott2009]. Prisutnost ovih biljaka u obalnim sedimentima stvara specifične uvjete okoliša koji podržavaju veliki broj stanica raznolikih i aktivnih mikrobnih zajednica [@Duarte2005]. Većina istraživanja mikrobnih zajednica morskih cvjetnica vezana je za epifite i rizosferu [@Cucio2016; @Korlevic2021], dok su istraživanja zajednica u sedimentima rijetka. Posljedično su i saznanja o dinamici i utjecaju livade na mikrobne zajednice u sedimentima ograničena. U ovom okolišu, mikrobne zajednice pospješuju oslobađanje i transformaciju nutrijenata tijekom razgradnje organske tvari, podržavajući time rast i primarnu produkciju biljaka. Osim ovakvih povoljnih učinaka, mikrobna aktivnost može imati i negativnih utjecaja na biljke, poput oslobađanja sumporovodika uslijed visokih stopa redukcije sulfata [@Duarte2005]. Za rast i razvoj morskih cvjetnica bitno je da povoljni učinci mikrobne aktivnosti, poput oslobađanja i transformacije nutrijenata, nadvladavaju nepovoljne, kao što je proizvodnja sumporovodika [@Duarte2005]. Prisutnost livada morskih cvjetnica i mikrobna remineralizacija organske tvari u sedimentu bitni su čimbenici u biogeokemijskom ciklusu ugljika [@Duarte2005; @Duarte2005a]. Zbog navedenog, važno je unaprijediti razumijevanje međudjelovanja morskih cvjetnica i svih njihovih mikrobnih zajednica.
+
+Morska cvjetnica *Cymodocea nodosa* rasprostranjena je širom Sredozemnog mora [@Green2003; @Short2007]. U skladu s podacima o propadanju livada morskih cvjetnica širom svijeta uočeno je i propadanje livada vrste *Cymodocea nodosa* u raznim obalnim područjima [@Barsanti2007; @Boudouresque2009; @Perez-Ruzafa2006; @Shili2002], uključujući i sjeverno Jadransko more [@Green2003; @Orlando-Bonaca2015; @Orlando-Bonaca2019]. Zbog gubitka ovih vrijednih staništa te ograničenih saznanja o mikrobnim zajednicama sedimenata morskih cvjetnica, cilj istraživanja bio je utvrditi sastav i raznolikost mikrobnih zajednica u sedimentu livade vrste *Cymodocea nodosa* primjenom sekvenciranja markerskog gena te odrediti funkcionalnu raznolikost i dinamiku zajednica zajedničkom primjenom metoda metagenomike i metaproteomike.
+
+Mjesečno uzorkovanje vrste *Cymodocea nodosa*, vodenog stupca i sedimenta provedeno je u uvali Saline, smještenoj sjeverozapadno od Rovinja, u sjevernom Jadranskom moru, u razdoblju od srpnja 2017. do listopada 2018. Procjena stanja ove morske cvjetnice obavljena je uzorkovanjem unutar livade metodom probnih kvadrata te biometrijskom analizom izdanaka i rizoma s korijenjem. Uzorci jezgara površinskog sedimenta prikupljeni su na dvije postaje, jednoj bez vegetacije i jednoj koja je na početku uzorkovanja sadržavala livadu vrste *Cymodocea nodosa*. Kako bi se utvrdila dinamika uvjeta u okolišu, određen je niz fizikalno-kemijskih parametara u vodenom stupcu i u prikupljenim jezgrama sedimenta. Prije izdvajanja DNA i proteina, svaka je jezgra sedimenta izrezana u četiri odsječka visine 1 \si{\cm}. Izdvajanje ukupne DNA provedeno je primjenom smjese organskih otapala prema @Zhou1996, uz modifikacije koje su opisali @Pjevac2018. Sastav i raznolikost mikrobne zajednice utvrđeni su sekvenciranjem regije V4 gena za 16S rRNA platformom Illumina MiSeq, dok su funkcionalna raznolikost i dinamika zajednica određene iz metaboličkih profila, proizašlih iz zajedničke analize metagenoma i metaproteoma. Metagenomi su sekvencirani analizom ukupne DNA iz odabranih uzoraka platformom Illumina NovaSeq 6000. Ukupni su proteini izdvojeni izravnom lizom mikrobnih stanica inkubacijom sedimenta u lužnatom puferu s visokom koncentracijom natrijevog dodecilsulfata i naknadnim taloženjem s trikloroctenom kiselinom [@Chourey2010]. Sastav metaproteoma, te posljedično i metabolički profil zajednica, određeni su primjenom tandemske masene spektrometrije te identifikacijom proteina usporedbom dobivenih masenih spektara s aminokiselinskim sljedovima proizašlim iz analize metagenoma.
+
+Na početku istraživanja, uvalu Saline naseljavala je morska cvjetnica vrste *Cymodocea nodosa*, čija se prostrana livada protezala od jugozapadnog dijela uvale, dubine 1,5 \si{\m}, prema središnjem dijelu, dubine 4 \si{\m}. Na kraju istraživanja, preostalo je svega nekoliko vrlo malih područja naseljenih s vrstom *Cymodocea nodosa*, uz samu obalu u obliku uskih pruga. Biometrijska analiza ukazala je na normalan ciklus rasta izdanaka i rizoma s korijenjem od srpnja 2017. do ožujka 2018. Najviše vrijednosti biometrijskih parametara izdanaka zabilježene su u listopadu 2017., nakon čega je, u studenom 2017., utvrđen snažan pad vrijednosti, u skladu s uobičajenim smanjenim rastom morske cvjetnice zimi [@Agostini2003; @Cancemi2002; @Najdek2020a; @Terrados1992; @Zavodnik1998]. Međutim, na proljeće 2018., izostao je ponovni rast morske cvjetnice i oporavak livade. Za razliku od izdanaka, biomasa rizoma s korijenjem bila je stabilna do ožujka 2018., kada je uočen njezin pad, koji se nastavio do kraja istraživanja, u skladu s uočenim propadanjem livade. Proces propadanja najvjerojatnije je potaknulo smanjenje dostupnosti svjetla, i posljedično pad fotosintetske aktivnosti, zbog povećane mutnoće mora uzrokovane snažnijim terigenim donosom i resuspenzijom sedimenta. Na snažniji terigeni donos upućivalo je smanjenje saliniteta i povećanje koncentracije partikularne tvari u vodenom stupcu. Pad fotosintetske aktivnosti prouzročio je i pad oksidacijske sposobnosti korijenja, bitnog mehanizama zaštite morske cvjetnice od toksičnog djelovanja sumporovodika. Naime, nakon početka propadanja livade, zabilježeno je povećanje koncentracije i proširenje zone nakupljanja sumporovodika.
+
+Iako su se uvjeti okoliša u sedimentu tijekom istraživanog razdoblja, u kojem je zabilježeno i propadanje livade, mijenjali, analiza raznolikosti zasnovana na sekvenciranju markerskog gena nije otkrila jasnu vremensku sukcesiju mikrobne zajednice sedimenta. Umjesto toga, zabilježene su razlike u zajednicama u odnosu na dubinu sedimenta te između postaje bez vegetacije i postaje koja je na početku istraživanja sadržavala livadu morske cvjetnice. Taksonomska analiza sastava mikrobnih zajednica otkrila je prevladavanje nukleotidnih sljedova domene *Bacteria* nad onima domene *Archaea*. Bakterijsku zajednicu činila su prvenstveno koljena *Desulfobacterota*, *Bacteroidota*, *Chloroflexi*, *Planctomycetota* i *Campylobacterota* te razred *Gammaproteobacteria*, dok su zajednicom arheja prevladavala koljena *Nanoarchaeota*, *Thermoplasmatota*, *Crenarchaeota* i *Asgardarchaeota*. Analizom dinamike taksonomskih skupina utvrđen je pad udjela s dubinom sedimenta domene *Bacteria*, koljena *Bacteroidota* i razreda *Gammaproteobacteria*, dok je za domenu *Archaea* te koljena *Chloroflexi* i *Thermoplasmatota* uočen suprotni trend rasta. Nadalje, udio koljena *Bacteroidota* i *Campylobacterota* bio je veći na postaji koja je na početku istraživanja sadržavala livadu, za razliku od koljena *Crenarchaeota* i razreda *Gammaproteobacteria*, čiji je udio bio veći na postaji bez vegetacije. Uočena vremenska stabilnost zajednica tijekom propadanja livade upućivala je na potrebu provjere odražavanja ovog obrasca i u funkcionalnoj raznolikosti i dinamici mikrobnih zajednica sedimenta.
+
+Metabolički profili mikrobnih zajednica, proizašli iz zajedničke analize metagenoma i metaproteoma, su za razliku od sastava i raznolikosti zajednica ukazali na promjene tijekom propadanja livade. Prije početka propadanja, uočene su razlike u bogatstvu i indeksu raznolikosti proteina između postaje bez vegetacije i postaje s livadom morske cvjetnice. Ove su razlike bile izraženije u dubljim slojevima sedimenta. Tijekom propadanja, bogatstvo i indeksi raznolikosti proteina u sedimentu bez vegetacije postali su slični onima u sedimentu s propadajućom livadom, dok u samom sedimentu s propadajućom livadom nisu uočene vremenske promjene ovih parametara. U skladu s ovim podacima, vremenske promjene strukture metaboličkog profila uočene su isključivo na postaji bez vegetacije te su, također, bile izraženije u dubljim slojevima sedimenta.
+
+Metaboličkim su profilima mikrobnih zajednica prevladavali proteini vezani uz proizvodnju i pretvorbu energije. Kako bi se utvrdio sastav proteina uključenih u razgradnju organske tvari i njihov odgovor na propadanje livade, praćena je dinamika hidrolitičkih enzima, ABC-transportera (engl. *\underline{A}TP-\underline{b}inding \underline{c}assette*), enzima vezanih za razne fermentacijske procese te proteina uključenih u disimilatornu redukciju sulfata. Među hidrolitičkim enzimima najzastupljeniji su bili enzimi za razgradnju ugljikohidrata i proteina. To je bilo u skladu s prisutnošću ABC-transportera, od kojih su najzastupljeniji bili specifični za šećere i aminokiseline, što naglašava važnost ugljikohidrata i proteina za mikrobnu zajednicu u sedimentu. Analiza enzima vezanih za razne fermentacijske procese otkrila je najveću zastupljenost proteina uključenih u fermentaciju acetata, formata i etanola, važnih fermentacijskih produkata u morskim sedimentima. Među proteinima za proizvodnju i pretvorbu energije, jedni od najzastupljenijih bili su enzimi uključeni u disimilatornu redukciju sulfata, odražavajući važnost ovog procesa za mineralizaciju organske tvari u morskim sedimentima. Tijekom propadanja livade, dinamika ABC-transportera, enzima vezanih za fermentacijske procese te proteina uključenih u disimilatornu redukciju sulfata uglavnom je pratila već opisane promjene cjelokupnog metaboličkog profila.
+
+Rezultati istraživanja sastava zajednica u sedimentu morske cvjetnice *Cymodocea nodosa* upotpunjuju opis mikrobnih zajednica povezanih s ovom važnom morskom cvjetnicom Sredozemnog mora. Također, zajednička primjena metoda metagenomike i metaproteomike u određivanju metaboličkog profila zajednica čini iskorak u istraživanju, ne samo mikrobnih zajednica sedimenta morskih cvjetnica, već i općenito zajednica površinskog obalnog sedimenta. Praćenje stanja morske cvjetnice *Cymodocea nodosa* u uvali Saline, tijekom kojeg je zabilježeno propadanje livade, te određivanje sastava i funkcije mikrobnih zajednica u sedimentu pružilo je posebnu priliku za istraživanje odgovora zajednica na propadanje livade morske cvjetnice. Zaključno, rezultati ukazuju na izostanak utjecaja propadanja livade na sastav mikrobnih zajednica sedimenta. Međutim, funkcionalna analiza utvrdila je promjene metaboličkog profila zajednica tijekom propadanja livade, isključivo u okolnom sedimentu bez vegetacije i s izraženijim promjenama u dubljim slojevima sedimenta.
+
+```{=latex}
+    
+}
+
+% Switch to a new page
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Table of contents (TOC)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Modify the page style for the plain page style so
+% that the first page of the TOC has a page number
+\fancypagestyle{plain}{\fancyhf{}
+                       \renewcommand{\headrulewidth}{0pt}
+                       \fancyfoot[R]{\thepage}}
+
+% Create PDF bookmark for the TOC
+\pdfbookmark{\MakeUppercase\contentsname}{contents}
+
+% Add TOC
+\tableofcontents
+
+% Restore the page style for the plain page style
+% Clear page numbers from the footer and remove the header line for
+% subsequent plain pages
+\fancypagestyle{plain}{\fancyhf{}
+                       \renewcommand{\headrulewidth}{0pt}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Change the appearance of chapter titles that do not have
+% a number after the inclusion of the TOC, so that we can
+% customise the appearance of the TOC title
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Customise the appearance of chapter titles that do not have
+% a number (i.e., unnumbered chapters)
+\titleformat{name=\chapter, numberless}
+    [block] % display number and title on the same line
+    {\Huge\bfseries\FlushRight} % set font style and alignment
+    {} % specify number format
+    {1ex} % set space between number and title
+    {} % format title text
+    [{\titlerule[0.4pt]}\newpage] % add horizontal line below
+                                  % title and set its width
+
+% Customise the position of chapter titles that do not have
+% a number (i.e., unnumbered chapters)
+\titlespacing*{name=\chapter, numberless}
+    {0pt} % set horizontal space to the left of the title
+    {20cm} % set vertical space before the title
+    {0pt} % set vertical space after the title
+
+```
+
+```{=latex}
+
+% Switch to a new page
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% List of publications
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Prevent the removal of the vertical space
+% before the title (default LaTeX behaviour)
+\vspace*{0pt}
+
+% Create PDF bookmark for the List of publications
+\pdfbookmark{LIST OF SCIENTIFIC ARTICLES}{scientific-articles-list}
+
+```
+## LIST OF SCIENTIFIC ARTICLES {.unlisted .unnumbered #scientific-articles-list}
+
+1. Najdek, M., Korlević, M., Paliaga, P., **Markovski**, **M.**, Ivančić, I., Iveša, Lj., Felja, I., and Herndl, G. J. (2020). Dynamics of environmental conditions during the decline of a *Cymodocea nodosa* meadow. *Biogeosciences*, *17*(12), 3299–3315. https://doi.org/10.5194/bg-17-3299-2020  
+**Contribution**: Investigation and writing---review and editing.
+\bigskip
+
+2. **Markovski**, **M.**, Najdek, M., Herndl, G. J., and Korlević, M. (2022). Compositional stability of sediment microbial communities during a seagrass meadow decline. *Frontiers in Marine Science*, *9*, 966070. https://doi.org/10.3389/fmars.2022.966070  
+**Contribution**: Sampling, laboratory and data analyses, writing---original draft, review and editing. 
+\bigskip
+
+3. **Markovski**, **M.**, Najdek, M., Zhao, Z., Herndl, G. J., and Korlević, M. (2025). Shift in the metabolic profile of sediment microbial communities during seagrass decline. *Environmental Microbiome*, *20*(1), 93. https://doi.org/10.1186/s40793-025-00750-1  
+**Contribution**: Sampling, laboratory and data analyses, writing---original draft, review and editing.
+
+```{=latex}
+
+% Switch to a new page
+\clearpage
+
+```
